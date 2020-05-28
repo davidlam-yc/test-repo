@@ -1,6 +1,6 @@
 {
   "name": "dummy",
-  "version": "1.0.0",
+  "version": "1.0.1-alpha.6+734f9bf",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -17,5 +17,6 @@
   "bugs": {
     "url": "https://github.com/davidlam-yc/test-repo/issues"
   },
-  "homepage": "https://github.com/davidlam-yc/test-repo#readme"
+  "homepage": "https://github.com/davidlam-yc/test-repo#readme",
+  "gitHead": "734f9bf2822e87250132d056532ed4e52b91de6c"
 }
