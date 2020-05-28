@@ -9,6 +9,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "bootstrap": "lerna bootstrap",
+    "version": "lerna version patch --yes",
     "publish": "lerna publish --yes --registry https://npm.pkg.github.com/"
   },
   "repository": {
