@@ -1,6 +1,6 @@
 {
   "name": "@davidlam-yc/log",
-  "version": "1.0.2-alpha.0+9f0d8a0",
+  "version": "1.0.2-alpha.1+02f20fe",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -19,5 +19,5 @@
     "url": "https://github.com/davidlam-yc/test-repo/issues"
   },
   "homepage": "https://github.com/davidlam-yc/test-repo#readme",
-  "gitHead": "9f0d8a0897561caffc591781b22e3256ea85bcde"
+  "gitHead": "02f20fe8a25994a55484e9f661efe013c29d259d"
 }
