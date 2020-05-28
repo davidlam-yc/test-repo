@@ -1,6 +1,6 @@
 {
   "name": "@davidlam-yc/log",
-  "version": "1.0.2-alpha.1+02f20fe",
+  "version": "1.0.2",
   "description": "",
   "main": "index.js",
   "scripts": {
