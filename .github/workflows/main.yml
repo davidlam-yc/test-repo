@@ -20,7 +20,7 @@ jobs:
         node-version: '12.x'
         registry-url: 'https://npm.pkg.github.com'
         scope: '@davidlam-yc'
-    - run: echo "//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}" > test.txt
+    - run: echo "//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}" > .npmrc
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - run: npm install
