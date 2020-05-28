@@ -1,10 +1,6 @@
 {
   "name": "@davidlam-yc/dummy",
-<<<<<<< HEAD
-  "version": "1.0.3",
-=======
   "version": "1.0.2",
->>>>>>> 2c0d25cc9068e13e9213ee4eac5a0bf0f7554f5c
   "description": "",
   "main": "index.js",
   "scripts": {
