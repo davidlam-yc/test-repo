@@ -1,0 +1,47 @@
+
+name: Feature Build
+on:
+  push:
+    branches:
+      - master
+    paths:
+    - 'packages/react-app/**'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [12.x]
+        
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: cd into dir
+      run: |
+        cd packages/react-app
+    - name: print current dir
+      run: |
+        pwd
+    - name: npm install
+      run: |
+        npm install
+      working-directory: packages/react-app
+    - name: Dev Build
+      run: |
+        npm run build
+      working-directory: packages/react-app
+    - name: Deploy to S3
+      uses: jakejarvis/s3-sync-action@master
+      with:
+        args: --acl public-read --delete
+      env:
+        AWS_S3_BUCKET: ${{ secrets.AWS_BUCKET_NAME_REACT }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_REGION: ${{ secrets.AWS_REGION }}
+        SOURCE_DIR: "build"
+      working-directory: packages/react-app
