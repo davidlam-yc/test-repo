@@ -3,5 +3,6 @@
     "packages/*"
   ],
   "version": "independent",
-  "command.publish.registry": "https://npm.pkg.github.com/"
+  "command.publish.registry": "https://npm.pkg.github.com/",
+  "command.publish.ignoreChanges": [ "packages/react-app"]
 }
