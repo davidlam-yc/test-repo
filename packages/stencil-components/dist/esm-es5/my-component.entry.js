@@ -13,7 +13,7 @@ var MyComponent = /** @class */ (function () {
         return format(this.first, this.middle, this.last);
     };
     MyComponent.prototype.render = function () {
-        return h("div", null, "Hello, World! I'm ", this.getText());
+        return h("div", null, "Hello, Mars! I'm ", this.getText());
     };
     return MyComponent;
 }());

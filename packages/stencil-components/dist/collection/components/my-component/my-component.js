@@ -6,7 +6,7 @@ export class MyComponent {
     }
     render() {
         return h("div", null,
-            "Hello, World! I'm ",
+            "Hello, Mars! I'm ",
             this.getText());
     }
     static get is() { return "my-component"; }

@@ -20,7 +20,7 @@ const MyComponent = class {
         return format(this.first, this.middle, this.last);
     }
     render() {
-        return index.h("div", null, "Hello, World! I'm ", this.getText());
+        return index.h("div", null, "Hello, Mars! I'm ", this.getText());
     }
 };
 MyComponent.style = myComponentCss;
