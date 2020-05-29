@@ -22,12 +22,6 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: cd into dir
-      run: |
-        cd packages/react-app
-    - name: print current dir
-      run: |
-        pwd
     - name: npm install
       run: |
         npm install
@@ -36,6 +30,9 @@ jobs:
       run: |
         npm run build
       working-directory: ${{env.working-directory}}
+    - name: print current dir
+      run: |
+        pwd
     - name: Deploy to S3
       uses: jakejarvis/s3-sync-action@master
       with:
@@ -45,5 +42,4 @@ jobs:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_REGION: ${{ secrets.AWS_REGION }}
-        SOURCE_DIR: "build"
-      working-directory: ${{env.working-directory}}
+        SOURCE_DIR: "packages/react-app/build"
