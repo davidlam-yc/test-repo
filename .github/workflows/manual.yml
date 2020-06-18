@@ -1,0 +1,31 @@
+
+name: Feature Build
+on:
+  repository_dispatch:
+    types: manual-test
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      working-directory: ./packages/react-app
+    
+    strategy:
+      matrix:
+        node-version: [12.x]
+        
+    steps:
+    - name: print branch
+      run: |
+        echo ${{ github.event.client_payload.branch }}
+    - uses: actions/checkout@v1
+      with:
+        ref: ${{ github.event.client_payload.branch }}
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: npm install
+      run: |
+        npm install
+      working-directory: ${{env.working-directory}}
+
