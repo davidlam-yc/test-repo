@@ -23,6 +23,9 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+    - name: npm i
+      run: |
+        npm i
     - name: lerna bootstrap
       run: |
         npm run bootstrap
@@ -30,8 +33,8 @@ jobs:
       run: |
         npm run build
     - name: Upload artifact
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v2
       with:
-        name: packages/stencil-components
-        path: packages/stencil-components
+        name: stencil-components-www
+        path: packages/stencil-components/www/
 

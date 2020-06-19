@@ -9,7 +9,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "bootstrap": "lerna bootstrap",
-    "build": "lerna exec -- rm -rf ./node_modules",
+    "build": "lerna exec -- npm run build",
     "version": "lerna version patch --yes",
     "publish": "lerna publish --canary --yes --registry https://npm.pkg.github.com/"
   },
