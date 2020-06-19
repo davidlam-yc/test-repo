@@ -1,5 +1,5 @@
 
-name: Deploy ${{ github.event.client_payload.branch }} to dev
+name: Deploy to dev
 on:
   repository_dispatch:
     types: manual-test
@@ -7,16 +7,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      working-directory: ./packages/stencil-components
     
     strategy:
       matrix:
         node-version: [12.x]
         
     steps:
+    
     - name: print branch
       run: |
-        echo ${{ github.event.client_payload.branch }}
+        echo Checking out ${{ github.event.client_payload.branch }}
     - uses: actions/checkout@v1
       with:
         ref: ${{ github.event.client_payload.branch }}
@@ -26,6 +26,13 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: lerna bootstrap
       run: |
-        lerna bootstrap
-      working-directory: ${{env.working-directory}}
+        npm run bootstrap
+    - name: build
+      run: |
+        npm run build
+    - name: Upload artifact
+      uses: actions/upload-artifact@v1
+      with:
+        name: packages/stencil-components
+        path: packages/stencil-components
 
