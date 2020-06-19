@@ -1,5 +1,5 @@
 
-name: Feature Build
+name: Deploy ${{ github.event.client_payload.branch }} to dev
 on:
   repository_dispatch:
     types: manual-test
@@ -7,7 +7,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      working-directory: ./packages/react-app
+      working-directory: ./packages/stencil-components
     
     strategy:
       matrix:
@@ -24,8 +24,8 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: npm install
+    - name: lerna bootstrap
       run: |
-        npm install
+        lerna bootstrap
       working-directory: ${{env.working-directory}}
 
