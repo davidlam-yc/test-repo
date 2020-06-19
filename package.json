@@ -8,6 +8,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy:dev": "node manual.js",
     "bootstrap": "lerna bootstrap",
     "build": "lerna exec -- npm run build",
     "version": "lerna version patch --yes",
@@ -26,5 +27,9 @@
   "description": "",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
+  },
+  "dependencies": {
+    "inquirer": "^7.2.0",
+    "yargs": "^15.3.1"
   }
 }
