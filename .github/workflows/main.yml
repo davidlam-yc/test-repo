@@ -6,9 +6,10 @@ name: publish to s3
 # events but only for the master branch
 on:
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+    branches: 
+    - master
+    paths:
+    - 'packages/stencil-components/**'
 
 jobs:
   build:
