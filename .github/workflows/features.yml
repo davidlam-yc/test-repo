@@ -1,13 +1,13 @@
 # This is a basic workflow to help you get started with Actions
 
-name: publish to s3 master
+name: publish to s3 feature
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
 on:
   push:
     branches: 
-    - master
+    - feat/**
     paths:
     - 'packages/stencil-components/**'
 
@@ -34,4 +34,5 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_REGION: ${{ secrets.AWS_REGION }}
         SOURCE_DIR: "packages/stencil-components/www"
+        DEST_DIR: "/feat"
       
