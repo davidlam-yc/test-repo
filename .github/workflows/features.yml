@@ -24,6 +24,9 @@ jobs:
     - name: build
       run: |
         npm run build
+    - name: print branch
+      run: |
+        echo ${GITHUB_REF##*/}
     - name: Deploy to S3
       uses: jakejarvis/s3-sync-action@master
       with:
@@ -34,5 +37,5 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_REGION: ${{ secrets.AWS_REGION }}
         SOURCE_DIR: "packages/stencil-components/www"
-        DEST_DIR: "/feat"
+        DEST_DIR: ${GITHUB_REF##*/}
       
