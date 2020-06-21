@@ -1,14 +1,14 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Publish to github packages
+name: publish to s3
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
 on:
   push:
-    branches: [ placeholder ]
+    branches: [ master ]
   pull_request:
-    branches: [ placeholder ]
+    branches: [ master ]
 
 jobs:
   build:
@@ -18,13 +18,14 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: '12.x'
-        registry-url: 'https://npm.pkg.github.com'
-        scope: '@davidlam-yc'
-    - run: echo "//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}" > .npmrc
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - run: npm install
     - run: npm run bootstrap
-    - run: npm run publish
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: build
+      run: |
+        npm run build
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: stencil-components-www
+        path: packages/stencil-components/www/
+      
