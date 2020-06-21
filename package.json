@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "deploy:dev": "node manual.js",
     "bootstrap": "lerna bootstrap",
-    "build": "lerna exec -- npm run build",
+    "build": "echo hherherherherherhe",
     "version": "lerna version patch --yes",
     "publish": "lerna publish --canary --yes --registry https://npm.pkg.github.com/"
   },
