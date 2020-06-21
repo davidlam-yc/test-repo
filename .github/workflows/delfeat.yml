@@ -31,7 +31,3 @@ jobs:
     - name: run script
       run: ./scripts/delete.sh
 
-
-
-
-  
