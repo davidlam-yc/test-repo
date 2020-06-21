@@ -18,5 +18,5 @@ jobs:
         node-version: '12.x'
     - name: check branch
       run: |
-        echo "github.head_ref ${{github.head_ref#*/}}"
-        echo "github.base_ref ${{github.base_ref#*/}}"
+        echo "github.head_ref ${{github.head_ref}}"
+        echo "github.base_ref ${{github.base_ref}}"
