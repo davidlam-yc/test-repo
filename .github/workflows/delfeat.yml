@@ -6,7 +6,7 @@ name: delete a branch, delete s3 directory
 # events but only for the master branch
 on:
   pull_request:
-    types: [closed]
+    types: [opened]
 
 jobs:
   build:
