@@ -6,7 +6,7 @@ name: delete a branch, delete s3 directory
 # events but only for the master branch
 on:
   pull_request:
-    types: [closed]
+    types: [opened]
 
 jobs:
   build:
@@ -20,4 +20,5 @@ jobs:
       run: |
         echo "GITHUB_REF ${GITHUB_REF}"
         echo "GITHUB_SHA ${GITHUB_SHA}"
-        echo "github.payload.pull_request.head.ref ${github.payload.pull_request.head.ref}"
+        echo "github.payload.pull_request.head.ref ${{github.payload.pull_request.head.ref}}"
+  
