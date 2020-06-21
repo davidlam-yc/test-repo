@@ -18,5 +18,6 @@ jobs:
         node-version: '12.x'
     - name: check branch
       run: |
-        echo ${GITHUB_REF##*/}
-    
+        echo "GITHUB_REF ${GITHUB_REF}"
+        echo "GITHUB_SHA ${GITHUB_SHA}"
+        echo "github.payload.pull_request.head.ref ${github.payload.pull_request.head.ref}"
