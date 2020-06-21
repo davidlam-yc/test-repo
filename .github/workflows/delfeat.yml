@@ -18,6 +18,10 @@ jobs:
         node-version: '12.x'
     - name: check branch
       run: |
-        echo "GITHUB_REF ${GITHUB_REF}"
-        echo "GITHUB_SHA ${GITHUB_SHA}"
-    
+        echo "github.head_ref ${{github.head_ref}}"
+        echo "github.base_ref ${{github.base_ref}}"
+        echo "github.head_ref_edit ${{github.head_ref}}"
+        echo "github.base_ref_edit ${{github.base_ref}}"
+    - name: run script
+      run: ./scripts/delete.sh
+
