@@ -19,11 +19,15 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: '12.x'
-    - run: npm install
-    - run: npm run bootstrap
-    - name: build
+    - name: Install lerna
+      run: npm install -g lerna
+    - name: Run lerna bootstrap
+      run: lerna bootstrap
+    - name: Build
       run: |
+        echo "Building from branch ${GITHUB_REF##*/}..."
         npm run build
+      working-directory: packages/stencil-components
     - name: Deploy to S3
       uses: jakejarvis/s3-sync-action@master
       with:
