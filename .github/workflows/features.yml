@@ -1,9 +1,5 @@
-# This is a basic workflow to help you get started with Actions
+name: Build and Deploy to feature to AWS S3 bucket
 
-name: publish to s3 feature
-
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
 on:
   push:
     branches: 
@@ -19,14 +15,15 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: '12.x'
-    - run: npm install
-    - run: npm run bootstrap
-    - name: build
+    - name: Install lerna
+      run: npm install -g lerna
+    - name: Run lerna bootstrap
+      run: lerna bootstrap
+    - name: Build
       run: |
+        echo "Building from branch ${GITHUB_REF##*/}..."
         npm run build
-    - name: print branch
-      run: |
-        echo ${GITHUB_REF##*/}
+      working-directory: packages/stencil-components
     - name: Deploy to S3
       uses: jakejarvis/s3-sync-action@master
       with:
