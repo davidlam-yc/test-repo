@@ -14,4 +14,4 @@ read -a strarr <<< "$branch_name"
 
 # use AWS CLI to delete folder from s3 bucket
 echo "Deleting folder ${strarr[1]}"
-aws s3 rb s3://lerna-stencil/${strarr[1]}
+aws s3 rb "s3://lerna-stencil/${strarr[1]}"
