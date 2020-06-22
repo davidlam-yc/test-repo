@@ -10,8 +10,9 @@ pip install awscli
 # i.e. if branch name is 'feat/update-icons', get 'update-icons'
 # i.e. if branch name is 'feat/FE-8/create-localisation-service', get 'FE-8'
 IFS='/'
+
 read -a strarr <<< "$branch_name"
 
 # use AWS CLI to delete folder from s3 bucket
-echo "Deleting folder ${strarr[1]}"
-aws s3 rb s3://lerna-stencil/${strarr[1]}
+echo "Deleting folder ${strarr[@]:(-1)}"
+aws s3 rm s3://lerna-stencil/${strarr[@]:(-1)} --recursive
