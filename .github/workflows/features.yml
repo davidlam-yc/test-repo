@@ -3,11 +3,10 @@ name: Build and Deploy to feature to AWS S3 bucket
 on:
   pull_request:
     types: [opened]
-    branches: 
-    - feat/**
-    - fix/**
     paths:
     - 'packages/stencil-components/**'
+    branches: 
+    - feat/**
 
 jobs:
   build:
