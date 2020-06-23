@@ -2,7 +2,10 @@ name: Build and Deploy to feature to AWS S3 bucket
 
 on:
   pull_request:
-    types: [opened]
+  # if the event type is pull_request,
+  # the 'branches' config refers to the target branch
+    branches:
+    - 'master'
     paths:
     - 'packages/stencil-components/**'
 
@@ -14,6 +17,10 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: '12.x'
+    - name: ref
+      run: echo "YO ${GITHUB_REF}"
+    - name: ref
+      run: echo "YO ${GITHUB_REF##*/}"
     - name: Install lerna
       run: npm install -g lerna
     - name: Run lerna bootstrap
