@@ -1,8 +1,13 @@
-name: Delete branch folder from AWS S3 bucket()
+name: Delete branch folder from AWS S3 bucket
 
 on:
   pull_request:
     types: [closed]
+    branches: 
+    - feat/**
+    - fix/**
+    paths:
+    - 'packages/stencil-components/**'
 
 jobs:
   build:
