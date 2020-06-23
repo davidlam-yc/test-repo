@@ -2,7 +2,10 @@ name: Build and Deploy to feature to AWS S3 bucket
 
 on:
   pull_request:
-    types: [opened]
+  # if the event type is pull_request,
+  # the 'branches' config refers to the target branch
+    branches:
+    - 'master'
     paths:
     - 'packages/stencil-components/**'
 
@@ -18,11 +21,13 @@ jobs:
       run: npm install -g lerna
     - name: Run lerna bootstrap
       run: lerna bootstrap
-    - name: Build
+    - name: Run build
       run: |
-        echo "Building from branch ${GITHUB_REF##*/}..."
         npm run build
       working-directory: packages/stencil-components
+    - name: Get pull request number for folder name
+      run: |
+        echo ::set-env name=PULL_REQUEST_NUMBER::$(echo $(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH"))
     - name: Deploy to S3
       uses: jakejarvis/s3-sync-action@master
       with:
@@ -33,5 +38,5 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         AWS_REGION: ${{ secrets.AWS_REGION }}
         SOURCE_DIR: "packages/stencil-components/www"
-        DEST_DIR: ${GITHUB_REF##*/}
+        DEST_DIR: "$PULL_REQUEST_NUMBER"
       
