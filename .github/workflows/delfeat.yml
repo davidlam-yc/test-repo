@@ -4,8 +4,7 @@ on:
   pull_request:
     types: [closed]
     branches: 
-    - feat/**
-    - fix/**
+    - 'master'
     paths:
     - 'packages/stencil-components/**'
 
@@ -17,6 +16,12 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: '12.x'
+    - name: Get pull request number for folder name
+      run: |
+        echo ::set-env name=PULL_REQUEST_NUMBER::$(echo $(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH"))
+    - name: Check PR number
+      run: |
+        echo $PULL_REQUEST_NUMBER
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
