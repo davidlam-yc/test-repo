@@ -4,10 +4,8 @@ on:
   pull_request:
     types: [opened]
     branches: 
-    - feat/**
-    - fix/**
-    paths:
-    - 'packages/stencil-components/**'
+    - 'feat/**'
+    - 'fix/**'
 
 jobs:
   build:
